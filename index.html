@@ -302,6 +302,10 @@
           slide.classList.add("right");
         }
       });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === current);
+      });
     }
       slides.forEach((slide, index) => {
         slide.classList.remove("active", "left", "right");
@@ -324,6 +328,13 @@
     });
 
     slides.forEach(slide => {
+      slide.addEventListener("click", () => {
+        window.open(slide.getAttribute("data-link"), "_blank");
+      });
+      slide.querySelector(".cta").addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.open(slide.getAttribute("data-link"), "_blank");
+      });
       slide.onclick = () => window.open(slide.getAttribute("data-link"), "_blank");
       slide.querySelector(".cta").onclick = (e) => {
         e.stopPropagation();
@@ -331,7 +342,27 @@
       };
     });
 
+    
+    // 自動輪播
     setInterval(() => { showSlide(current + 1); }, 3000);
+    updateSlides();
+
+    // 手機滑動
+    var startX = 0;
+    document.getElementById("carousel").addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX;
+    });
+    document.getElementById("carousel").addEventListener("touchend", e => {
+      var endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) showSlide(current + 1);
+      else if (endX - startX > 50) showSlide(current - 1);
+    });
+
+    // 關閉廣告
+    document.getElementById('close-btn').onclick = function() {
+      document.getElementById('ad-container').style.display = 'none';
+    };
+    
     updateSlides();
 
     var startX = 0;
