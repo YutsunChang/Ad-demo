@@ -4,22 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instagram 模擬頁 (廣告20%滿版) + Carousel</title>
+  <title>Instagram 模擬頁 (修正版) + 3D Carousel</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
-      background: #000; /* IG風格黑背景 */
+      background: #000;
       overflow-x: hidden;
       font-family: Arial, sans-serif;
     }
-    .post {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-    }
     .post img {
-      width: 100vw;   /* 截圖滿版 */
+      width: 100vw;
       height: auto;
       display: block;
     }
@@ -30,15 +25,9 @@
       background: #fff;
       color: #262626;
     }
-    .comment {
-      margin-bottom: 8px;
-    }
-    .comment b {
-      margin-right: 5px;
-    }
-    .hashtags {
-      color: #00376b;
-    }
+    .comment { margin-bottom: 8px; }
+    .comment b { margin-right: 5px; }
+    .hashtags { color: #00376b; }
     #ad-container {
       position: fixed;
       bottom: 0;
@@ -63,15 +52,13 @@
       border-radius: 50%;
       background: rgba(0,0,0,0.5);
     }
-    #close-btn:hover {
-      background: rgba(0,0,0,0.7);
-    }
+    #close-btn:hover { background: rgba(0,0,0,0.7); }
     #carousel {
-      width: 20vh;  /* 高度20%螢幕 → 1:1正方形 */
+      width: 20vh;
       height: 20vh;
       margin: 10px auto;
       position: relative;
-      perspective: 600px;
+      perspective: 1000px;
       overflow: hidden;
     }
     .slide {
@@ -85,27 +72,10 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
       opacity: 0;
       transition: transform 0.8s ease, opacity 0.8s ease;
-    
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      cursor: pointer;
-      opacity: 0.5;
-      transition: transform 0.8s ease, opacity 0.8s ease;
     }
     .slide.active {
       opacity: 1;
       transform: translateX(0) scale(1) rotateY(0deg);
-      z-index: 3;
-    }
-      opacity: 1;
-      transform: scale(1);
       z-index: 3;
     }
     .slide.left {
@@ -113,15 +83,9 @@
       transform: translateX(-120px) scale(0.8) rotateY(30deg);
       z-index: 2;
     }
-      transform: scale(0.8) translateX(-50px);
-      z-index: 2;
-    }
     .slide.right {
       opacity: 0.8;
       transform: translateX(120px) scale(0.8) rotateY(-30deg);
-      z-index: 2;
-    }
-      transform: scale(0.8) translateX(50px);
       z-index: 2;
     }
     .cta {
@@ -161,107 +125,107 @@
   <div class="post">
     <img src="screenshot.jpg" alt="IG截圖">
     <div class="comments">
-      <div class="comment"><b>travel_life</b> 這張可以當桌布了！📱</div>
-<div class="comment"><b>smile_today</b> 好想去這裡！👍</div>
-<div class="comment"><b>beachy_vibes</b> 超棒的分享，謝謝🙏</div>
-<div class="comment"><b>beachy_vibes</b> 感覺超放鬆～😌</div>
-<div class="comment"><b>happy_mood</b> 好想去這裡！👍</div>
-<div class="comment"><b>chill_and_relax</b> 這張真的拍得好美👏</div>
-<div class="comment"><b>beachlover</b> 兄弟身材太好了🔥💪</div>
-<div class="comment"><b>beachlover</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>night_photographer</b> 這地方在哪裡？想去！📍</div>
-<div class="comment"><b>fitness_guy</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>lucky_star</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>night_photographer</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>travel_life</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>sunny_day</b> 太讚了！這景色😍</div>
-<div class="comment"><b>beachy_vibes</b> 看了想馬上出發旅行！</div>
-<div class="comment"><b>sunny_day</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>fit_king</b> 攝影技術超強👏</div>
-<div class="comment"><b>night_photographer</b> 感覺像天堂一樣💫</div>
-<div class="comment"><b>beachy_vibes</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>mountain_hiker</b> 這張可以當桌布了！📱</div>
-<div class="comment"><b>travel_life</b> 太讚了！這景色😍</div>
+      <div class="comment"><b>smile_today</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>adventure_girl</b> 感覺超放鬆～😌</div>
+<div class="comment"><b>coffee_addict</b> 好療癒的畫面❤️</div>
+<div class="comment"><b>wanderlust_jane</b> 感覺超放鬆～😌</div>
 <div class="comment"><b>mountain_hiker</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>beachy_vibes</b> 好想去這裡！👍</div>
-<div class="comment"><b>wanderlust_jane</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>snap_master</b> 太讚了！這景色😍</div>
-<div class="comment"><b>city_runner</b> 快分享更多照片吧📸</div>
-<div class="comment"><b>smile_today</b> 感覺超放鬆～😌</div>
-<div class="comment"><b>beachy_vibes</b> 攝影技術超強👏</div>
-<div class="comment"><b>adventure_girl</b> 感覺像天堂一樣💫</div>
-<div class="comment"><b>mountain_hiker</b> 好療癒的畫面❤️</div>
-<div class="comment"><b>explorer88</b> 感覺超放鬆～😌</div>
-<div class="comment"><b>beachlover</b> 一看就覺得開心😄</div>
-<div class="comment"><b>night_photographer</b> 兄弟身材太好了🔥💪</div>
-<div class="comment"><b>beachy_vibes</b> 攝影技術超強👏</div>
-<div class="comment"><b>sunny_day</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>snap_master</b> 超棒的分享，謝謝🙏</div>
-<div class="comment"><b>sunny_day</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>fitness_guy</b> 好想去這裡！👍</div>
-<div class="comment"><b>adventure_girl</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>mountain_hiker</b> 超棒的分享，謝謝🙏</div>
-<div class="comment"><b>wanderlust_jane</b> 希望有一天我也能去🌍</div>
-<div class="comment"><b>city_runner</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>beachy_vibes</b> 這張真的拍得好美👏</div>
-<div class="comment"><b>lucky_star</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>travel_life</b> 看了想馬上出發旅行！</div>
 <div class="comment"><b>beachy_vibes</b> 快分享更多照片吧📸</div>
-<div class="comment"><b>beachy_vibes</b> 好療癒的畫面❤️</div>
-<div class="comment"><b>wanderlust_jane</b> 感覺像天堂一樣💫</div>
-<div class="comment"><b>explorer88</b> 太讚了！這景色😍</div>
-<div class="comment"><b>smile_today</b> 陽光和笑容都很療癒☀️</div>
-<div class="comment"><b>smile_today</b> 這張可以當桌布了！📱</div>
-<div class="comment"><b>sunny_day</b> 希望有一天我也能去🌍</div>
-<div class="comment"><b>adventure_girl</b> 這張可以當桌布了！📱</div>
-<div class="comment"><b>smile_today</b> 這張真的拍得好美👏</div>
-<div class="comment"><b>mountain_hiker</b> 這張真的拍得好美👏</div>
-<div class="comment"><b>happy_mood</b> 太讚了！這景色😍</div>
-<div class="comment"><b>happy_mood</b> 這張真的拍得好美👏</div>
-<div class="comment"><b>smile_today</b> 太讚了！這景色😍</div>
-<div class="comment"><b>snap_master</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>happy_mood</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>night_photographer</b> 氣氛太棒了～🎶</div>
-<div class="comment"><b>lucky_star</b> 太讚了！這景色😍</div>
-<div class="comment"><b>fit_king</b> 希望有一天我也能去🌍</div>
-<div class="comment"><b>coffee_addict</b> 這光線抓得好好🌅</div>
-<div class="comment"><b>happy_traveler</b> 超棒的分享，謝謝🙏</div>
-<div class="comment"><b>night_photographer</b> 這光線抓得好好🌅</div>
-<div class="comment"><b>wanderlust_jane</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>snap_master</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>wanderlust_jane</b> 太讚了！這景色😍</div>
+<div class="comment"><b>night_photographer</b> 這張真的拍得好美👏</div>
+<div class="comment"><b>fitness_guy</b> 看了想馬上出發旅行！</div>
+<div class="comment"><b>city_runner</b> 氣氛太棒了～🎶</div>
 <div class="comment"><b>explorer88</b> 這張可以當桌布了！📱</div>
-<div class="comment"><b>nature_lover</b> 一看就覺得開心😄</div>
-<div class="comment"><b>snap_master</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>beachy_vibes</b> 這光線抓得好好🌅</div>
-<div class="comment"><b>happy_mood</b> 攝影技術超強👏</div>
-<div class="comment"><b>happy_mood</b> 超棒的分享，謝謝🙏</div>
-<div class="comment"><b>coffee_addict</b> 感覺像天堂一樣💫</div>
-<div class="comment"><b>lucky_star</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>smile_today</b> 感覺像天堂一樣💫</div>
-<div class="comment"><b>sunny_day</b> 好想去這裡！👍</div>
-<div class="comment"><b>smile_today</b> 這地方在哪裡？想去！📍</div>
-<div class="comment"><b>sunny_day</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>travel_life</b> 好療癒的畫面❤️</div>
-<div class="comment"><b>wanderlust_jane</b> 好療癒的畫面❤️</div>
-<div class="comment"><b>happy_traveler</b> 一看就覺得開心😄</div>
-<div class="comment"><b>sunny_day</b> 太讚了！這景色😍</div>
-<div class="comment"><b>happy_mood</b> 感覺像天堂一樣💫</div>
-<div class="comment"><b>lucky_star</b> 陽光和笑容都很療癒☀️</div>
-<div class="comment"><b>mountain_hiker</b> 太讚了！這景色😍</div>
-<div class="comment"><b>city_runner</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>adventure_girl</b> 一看就覺得開心😄</div>
-<div class="comment"><b>coffee_addict</b> 快分享更多照片吧📸</div>
-<div class="comment"><b>mountain_hiker</b> 一看就覺得開心😄</div>
-<div class="comment"><b>nature_lover</b> 這張真的拍得好美👏</div>
-<div class="comment"><b>fitness_guy</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>happy_traveler</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>chill_and_relax</b> 完美的假期 vibes 🌴</div>
-<div class="comment"><b>nature_lover</b> 這地方在哪裡？想去！📍</div>
-<div class="comment"><b>smile_today</b> 兄弟身材太好了🔥💪</div>
-<div class="comment"><b>travel_life</b> 好想去這裡！👍</div>
+<div class="comment"><b>chill_and_relax</b> 希望有一天我也能去🌍</div>
+<div class="comment"><b>nature_lover</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>explorer88</b> 一看就覺得開心😄</div>
+<div class="comment"><b>snap_master</b> 這張真的拍得好美👏</div>
+<div class="comment"><b>explorer88</b> 陽光和笑容都很療癒☀️</div>
+<div class="comment"><b>city_runner</b> 快分享更多照片吧📸</div>
+<div class="comment"><b>wanderlust_jane</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>nature_lover</b> 氣氛太棒了～🎶</div>
+<div class="comment"><b>coffee_addict</b> 陽光和笑容都很療癒☀️</div>
+<div class="comment"><b>adventure_girl</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>happy_traveler</b> 快分享更多照片吧📸</div>
+<div class="comment"><b>coffee_addict</b> 這張真的拍得好美👏</div>
+<div class="comment"><b>beachy_vibes</b> 快分享更多照片吧📸</div>
+<div class="comment"><b>beachlover</b> 感覺像天堂一樣💫</div>
+<div class="comment"><b>lucky_star</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>travel_life</b> 這張可以當桌布了！📱</div>
+<div class="comment"><b>travel_life</b> 氣氛太棒了～🎶</div>
+<div class="comment"><b>snap_master</b> 看了想馬上出發旅行！</div>
 <div class="comment"><b>smile_today</b> 這裡是夢想清單必去✔️</div>
-<div class="comment"><b>explorer88</b> 超棒的分享，謝謝🙏</div>
-<div class="comment"><b>wanderlust_jane</b> 感覺像天堂一樣💫</div>
-<div class="comment hashtags">#攝影 #戶外活動 #分享快樂 #海邊 #旅行 #快樂時光</div>
+<div class="comment"><b>snap_master</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>night_photographer</b> 一看就覺得開心😄</div>
+<div class="comment"><b>fitness_guy</b> 這地方在哪裡？想去！📍</div>
+<div class="comment"><b>travel_life</b> 氣氛太棒了～🎶</div>
+<div class="comment"><b>chill_and_relax</b> 這張真的拍得好美👏</div>
+<div class="comment"><b>beachy_vibes</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>wanderlust_jane</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>mountain_hiker</b> 太讚了！這景色😍</div>
+<div class="comment"><b>chill_and_relax</b> 感覺像天堂一樣💫</div>
+<div class="comment"><b>mountain_hiker</b> 這張可以當桌布了！📱</div>
+<div class="comment"><b>fitness_guy</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>travel_life</b> 這地方在哪裡？想去！📍</div>
+<div class="comment"><b>happy_traveler</b> 快分享更多照片吧📸</div>
+<div class="comment"><b>mountain_hiker</b> 太讚了！這景色😍</div>
+<div class="comment"><b>snap_master</b> 這張可以當桌布了！📱</div>
+<div class="comment"><b>city_runner</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>explorer88</b> 這地方在哪裡？想去！📍</div>
+<div class="comment"><b>mountain_hiker</b> 氣氛太棒了～🎶</div>
+<div class="comment"><b>chill_and_relax</b> 這張可以當桌布了！📱</div>
+<div class="comment"><b>happy_mood</b> 好療癒的畫面❤️</div>
+<div class="comment"><b>smile_today</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>smile_today</b> 希望有一天我也能去🌍</div>
+<div class="comment"><b>snap_master</b> 希望有一天我也能去🌍</div>
+<div class="comment"><b>smile_today</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>lucky_star</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>travel_life</b> 看了想馬上出發旅行！</div>
+<div class="comment"><b>coffee_addict</b> 好想去這裡！👍</div>
+<div class="comment"><b>city_runner</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>mountain_hiker</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>fit_king</b> 這張真的拍得好美👏</div>
+<div class="comment"><b>beachy_vibes</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>fitness_guy</b> 好想去這裡！👍</div>
+<div class="comment"><b>beachlover</b> 太讚了！這景色😍</div>
+<div class="comment"><b>coffee_addict</b> 太讚了！這景色😍</div>
+<div class="comment"><b>mountain_hiker</b> 感覺像天堂一樣💫</div>
+<div class="comment"><b>chill_and_relax</b> 好想去這裡！👍</div>
+<div class="comment"><b>lucky_star</b> 這地方在哪裡？想去！📍</div>
+<div class="comment"><b>night_photographer</b> 這地方在哪裡？想去！📍</div>
+<div class="comment"><b>beachlover</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>travel_life</b> 兄弟身材太好了🔥💪</div>
+<div class="comment"><b>night_photographer</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>nature_lover</b> 這張可以當桌布了！📱</div>
+<div class="comment"><b>sunny_day</b> 太讚了！這景色😍</div>
+<div class="comment"><b>adventure_girl</b> 攝影技術超強👏</div>
+<div class="comment"><b>happy_mood</b> 感覺超放鬆～😌</div>
+<div class="comment"><b>beachlover</b> 這張可以當桌布了！📱</div>
+<div class="comment"><b>wanderlust_jane</b> 希望有一天我也能去🌍</div>
+<div class="comment"><b>snap_master</b> 陽光和笑容都很療癒☀️</div>
+<div class="comment"><b>night_photographer</b> 好想去這裡！👍</div>
+<div class="comment"><b>happy_mood</b> 太讚了！這景色😍</div>
+<div class="comment"><b>lucky_star</b> 一看就覺得開心😄</div>
+<div class="comment"><b>fitness_guy</b> 感覺超放鬆～😌</div>
+<div class="comment"><b>adventure_girl</b> 希望有一天我也能去🌍</div>
+<div class="comment"><b>wanderlust_jane</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>sunny_day</b> 感覺像天堂一樣💫</div>
+<div class="comment"><b>wanderlust_jane</b> 這地方在哪裡？想去！📍</div>
+<div class="comment"><b>lucky_star</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>happy_traveler</b> 兄弟身材太好了🔥💪</div>
+<div class="comment"><b>city_runner</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>beachy_vibes</b> 這裡是夢想清單必去✔️</div>
+<div class="comment"><b>wanderlust_jane</b> 一看就覺得開心😄</div>
+<div class="comment"><b>happy_mood</b> 超棒的分享，謝謝🙏</div>
+<div class="comment"><b>nature_lover</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>snap_master</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>fitness_guy</b> 兄弟身材太好了🔥💪</div>
+<div class="comment"><b>wanderlust_jane</b> 這光線抓得好好🌅</div>
+<div class="comment"><b>beachlover</b> 好想去這裡！👍</div>
+<div class="comment"><b>beachy_vibes</b> 完美的假期 vibes 🌴</div>
+<div class="comment"><b>beachy_vibes</b> 這張真的拍得好美👏</div>
+      <div class="comment hashtags">#快樂時光 #放鬆 #假期 #快樂 #自然美景 #分享快樂</div>
     </div>
   </div>
 
@@ -287,9 +251,10 @@
   </div>
 
   <script>
+  document.addEventListener("DOMContentLoaded", function() {
     var slides = document.querySelectorAll(".slide");
     var dots = document.querySelectorAll(".dot");
-    var current = 0; // 從 slide1 開始
+    var current = 0;
 
     function updateSlides() {
       slides.forEach((slide, index) => {
@@ -301,17 +266,6 @@
         } else if (index === (current + 1) % slides.length) {
           slide.classList.add("right");
         }
-      });
-
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === current);
-      });
-    }
-      slides.forEach((slide, index) => {
-        slide.classList.remove("active", "left", "right");
-        if (index === current) slide.classList.add("active");
-        else if (index === (current - 1 + slides.length) % slides.length) slide.classList.add("left");
-        else if (index === (current + 1) % slides.length) slide.classList.add("right");
       });
       dots.forEach((dot, index) => {
         dot.classList.toggle("active", index === current);
@@ -335,19 +289,11 @@
         e.stopPropagation();
         window.open(slide.getAttribute("data-link"), "_blank");
       });
-      slide.onclick = () => window.open(slide.getAttribute("data-link"), "_blank");
-      slide.querySelector(".cta").onclick = (e) => {
-        e.stopPropagation();
-        window.open(slide.getAttribute("data-link"), "_blank");
-      };
     });
 
-    
-    // 自動輪播
     setInterval(() => { showSlide(current + 1); }, 3000);
     updateSlides();
 
-    // 手機滑動
     var startX = 0;
     document.getElementById("carousel").addEventListener("touchstart", e => {
       startX = e.touches[0].clientX;
@@ -358,25 +304,10 @@
       else if (endX - startX > 50) showSlide(current - 1);
     });
 
-    // 關閉廣告
-    document.getElementById('close-btn').onclick = function() {
-      document.getElementById('ad-container').style.display = 'none';
+    document.getElementById("close-btn").onclick = function() {
+      document.getElementById("ad-container").style.display = "none";
     };
-    
-    updateSlides();
-
-    var startX = 0;
-    document.getElementById("carousel").addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
-    document.getElementById("carousel").addEventListener("touchend", e => {
-      var endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) showSlide(current + 1);
-      else if (endX - startX > 50) showSlide(current - 1);
-    });
-
-    document.getElementById('close-btn').onclick = function() {
-      document.getElementById('ad-container').style.display = 'none';
-    };
+  });
   </script>
-
 </body>
 </html>
